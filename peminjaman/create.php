@@ -1,8 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['login'])) {
-    header("Location: ../login.php");
-    exit;
+    header("Location: ../login.php"); exit;
 }
 include "../database/koneksi.php";
 
@@ -12,37 +11,43 @@ $buku  = mysqli_query($koneksi, "SELECT * FROM buku WHERE stok > 0");
 
 <!DOCTYPE html>
 <html>
-<head><title>Peminjaman Buku</title></head>
+<head>
+<title>Tambah Peminjaman</title>
+<link rel="stylesheet" href="../assets/css/peminjaman.css">
+</head>
 <body>
 
-<h2>Peminjaman Buku</h2>
+<div class="container">
+<h2>Tambah Peminjaman</h2>
 
+<div class="form-box">
 <form action="proses.php" method="post">
-    <label>Siswa</label><br>
+    <label>Siswa</label>
     <select name="id_siswa" required>
-        <option value="">-- Pilih Siswa --</option>
         <?php while($s=mysqli_fetch_assoc($siswa)): ?>
-            <option value="<?= $s['id_siswa'] ?>">
-                <?= $s['nama'] ?> (<?= $s['kelas'] ?>)
-            </option>
+            <option value="<?= $s['id_siswa'] ?>"><?= $s['nama'] ?></option>
         <?php endwhile; ?>
-    </select><br><br>
+    </select>
 
-    <label>Buku</label><br>
+    <label>Buku</label>
     <select name="id_buku" required>
-        <option value="">-- Pilih Buku --</option>
         <?php while($b=mysqli_fetch_assoc($buku)): ?>
             <option value="<?= $b['id_buku'] ?>">
-                <?= $b['judul'] ?> (stok: <?= $b['stok'] ?>)
+                <?= $b['judul'] ?> (stok <?= $b['stok'] ?>)
             </option>
         <?php endwhile; ?>
-    </select><br><br>
+    </select>
 
-    <label>Jumlah</label><br>
-    <input type="number" name="jumlah" value="1" min="1" required><br><br>
+    <label>Jumlah</label>
+    <input type="number" name="jumlah"
+        min="1"
+        max="<?= $b['stok']; ?>"
+        required>
 
-    <button type="submit" name="pinjam">Simpan</button>
+    <button type="submit" name="pinjam" class="btn">Simpan</button>
 </form>
+</div>
+</div>
 
 </body>
 </html>

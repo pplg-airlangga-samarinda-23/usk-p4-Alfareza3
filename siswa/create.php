@@ -4,46 +4,48 @@ if (!isset($_SESSION['login'])) {
     header("Location: ../login.php");
     exit;
 }
-
 include "../database/koneksi.php";
 
 if (isset($_POST['simpan'])) {
-    $nis   = $_POST['nis'];
-    $nama  = $_POST['nama'];
-    $kelas = $_POST['kelas'];
-    $no_hp = $_POST['no_hp'];
-
-    mysqli_query($koneksi,
-        "INSERT INTO siswa (nis, nama, kelas, no_hp)
-         VALUES ('$nis','$nama','$kelas','$no_hp')"
-    );
-
+    mysqli_query($koneksi, "
+        INSERT INTO siswa (nis, nama, kelas, no_hp)
+        VALUES ('$_POST[nis]', '$_POST[nama]', '$_POST[kelas]', '$_POST[no_hp]')
+    ");
     header("Location: index.php");
 }
 ?>
 
 <!DOCTYPE html>
 <html>
-<head><title>Tambah Anggota</title></head>
+<head>
+    <title>Tambah Siswa</title>
+    <link rel="stylesheet" href="../assets/css/siswa.css">
+</head>
 <body>
 
-<h2>Tambah Anggota</h2>
+<div class="container">
+    <h2>Tambah Siswa</h2>
 
-<form method="post">
-    <label>NIS</label><br>
-    <input type="text" name="nis" required><br><br>
+    <div class="form-box">
+        <form method="post">
+            <label>NIS</label>
+            <input type="text" name="nis" required>
 
-    <label>Nama</label><br>
-    <input type="text" name="nama" required><br><br>
+            <label>Nama</label>
+            <input type="text" name="nama" required>
 
-    <label>Kelas</label><br>
-    <input type="text" name="kelas"><br><br>
+            <label>Kelas</label>
+            <input type="text" name="kelas">
 
-    <label>No HP</label><br>
-    <input type="text" name="no_hp"><br><br>
+            <label>No HP</label>
+            <input type="text" name="no_hp">
 
-    <button type="submit" name="simpan">Simpan</button>
-</form>
+            <button type="submit" name="simpan" class="btn">Simpan</button>
+            <br><br>
+            <a href="index.php" class="btn">← Kembali</a>
+        </form>
+    </div>
+</div>
 
 </body>
 </html>

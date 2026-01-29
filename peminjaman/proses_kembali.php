@@ -11,7 +11,6 @@ if (isset($_POST['kembali'])) {
 
     $id_peminjaman = $_POST['id_peminjaman'];
 
-    // Cek status dulu
     $cek = mysqli_query($koneksi, "
         SELECT status FROM peminjaman 
         WHERE id_peminjaman = '$id_peminjaman'
@@ -31,7 +30,6 @@ if (isset($_POST['kembali'])) {
             mysqli_begin_transaction($koneksi);
 
             try {
-                // Update status + jam kembali
                 mysqli_query($koneksi, "
                     UPDATE peminjaman
                     SET status = 'dikembalikan',
@@ -39,7 +37,6 @@ if (isset($_POST['kembali'])) {
                     WHERE id_peminjaman = '$id_peminjaman'
                 ");
 
-                // Kembalikan stok buku
                 mysqli_query($koneksi, "
                     UPDATE buku b
                     JOIN detail_peminjaman d 

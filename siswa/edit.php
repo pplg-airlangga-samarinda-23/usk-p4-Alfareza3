@@ -4,46 +4,57 @@ if (!isset($_SESSION['login'])) {
     header("Location: ../login.php");
     exit;
 }
-
 include "../database/koneksi.php";
 
 $id = $_GET['id'];
-$data = mysqli_query($koneksi, "SELECT * FROM siswa WHERE id_siswa='$id'");
-$siswa = mysqli_fetch_assoc($data);
+$siswa = mysqli_fetch_assoc(
+    mysqli_query($koneksi, "SELECT * FROM siswa WHERE id_siswa='$id'")
+);
 
 if (isset($_POST['update'])) {
-    $nis   = $_POST['nis'];
-    $nama  = $_POST['nama'];
-    $kelas = $_POST['kelas'];
-    $no_hp = $_POST['no_hp'];
-
-    mysqli_query($koneksi,
-        "UPDATE siswa SET
-         nis='$nis',
-         nama='$nama',
-         kelas='$kelas',
-         no_hp='$no_hp'
-         WHERE id_siswa='$id'"
-    );
-
+    mysqli_query($koneksi, "
+        UPDATE siswa SET
+        nis='$_POST[nis]',
+        nama='$_POST[nama]',
+        kelas='$_POST[kelas]',
+        no_hp='$_POST[no_hp]'
+        WHERE id_siswa='$id'
+    ");
     header("Location: index.php");
 }
 ?>
 
 <!DOCTYPE html>
 <html>
-<head><title>Edit Anggota</title></head>
+<head>
+    <title>Edit Siswa</title>
+    <link rel="stylesheet" href="../assets/css/siswa.css">
+</head>
 <body>
 
-<h2>Edit Anggota</h2>
+<div class="container">
+    <h2>Edit Siswa</h2>
 
-<form method="post">
-    <input type="text" name="nis" value="<?= $siswa['nis'] ?>" required><br><br>
-    <input type="text" name="nama" value="<?= $siswa['nama'] ?>" required><br><br>
-    <input type="text" name="kelas" value="<?= $siswa['kelas'] ?>"><br><br>
-    <input type="text" name="no_hp" value="<?= $siswa['no_hp'] ?>"><br><br>
-    <button type="submit" name="update">Update</button>
-</form>
+    <div class="form-box">
+        <form method="post">
+            <label>NIS</label>
+            <input type="text" name="nis" value="<?= $siswa['nis'] ?>" required>
+
+            <label>Nama</label>
+            <input type="text" name="nama" value="<?= $siswa['nama'] ?>" required>
+
+            <label>Kelas</label>
+            <input type="text" name="kelas" value="<?= $siswa['kelas'] ?>">
+
+            <label>No HP</label>
+            <input type="text" name="no_hp" value="<?= $siswa['no_hp'] ?>">
+
+            <button type="submit" name="update" class="btn">Update</button>
+            <br><br>
+            <a href="index.php" class="btn">← Kembali</a>
+        </form>
+    </div>
+</div>
 
 </body>
 </html>
