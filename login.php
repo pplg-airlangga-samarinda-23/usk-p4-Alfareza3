@@ -46,7 +46,8 @@ if (isset($_POST['login'])) {
 
         <button type="submit" name="login">Login</button>
     </form>
-
+    <a href="index.php" style="display:block;text-align:center;margin-top:10px;">Kembali</a>
+    <div class="footer-text">
     <div class="footer-text">
         © Perpustakaan Sekolah Digital
     </div>

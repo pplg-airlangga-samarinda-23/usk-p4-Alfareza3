@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 28, 2026 at 02:31 AM
+-- Generation Time: Feb 02, 2026 at 06:38 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -39,7 +39,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id_admin`, `username`, `password`, `nama`) VALUES
-(1, 'admin', 'admin123', 'Admin Perpustakaan');
+(1, 'admin', '123', 'Admin Perpustakaan');
 
 -- --------------------------------------------------------
 
@@ -83,9 +83,9 @@ CREATE TABLE `buku` (
 --
 
 INSERT INTO `buku` (`id_buku`, `judul`, `penulis`, `tahun_terbit`, `kategori`, `stok`) VALUES
-(1, 'Harry Potter dan Batu Bertuah', 'J.K. Rowling', 1997, 'Novel', 10),
-(2, 'Laskar Pelangi', 'Andrea Hirata', 2005, 'Novel', 8),
-(3, 'Pemrograman Web Dasar', 'Budi Raharjo', 2018, 'Teknologi', 5);
+(1, 'Harry Potter dan Batu Bertuah', 'J.K. Rowling', 1997, 'Novel', 113),
+(2, 'Laskar Pelangi', 'Andrea Hirata', 2005, 'Novel', 92),
+(3, 'Pemrograman Web Dasar', 'Budi Raharjo', 2018, 'Teknologi', 52);
 
 -- --------------------------------------------------------
 
@@ -105,8 +105,17 @@ CREATE TABLE `detail_peminjaman` (
 --
 
 INSERT INTO `detail_peminjaman` (`id_detail`, `id_peminjaman`, `id_buku`, `jumlah`) VALUES
-(1, 1, 1, 1),
-(2, 1, 2, 1);
+(4, 3, 1, 1),
+(5, 4, 1, 1),
+(6, 5, 1, 11),
+(7, 6, 1, 11),
+(8, 7, 2, 22),
+(9, 8, 1, 1222),
+(10, 9, 1, 1222),
+(11, 10, 3, 3),
+(12, 11, 1, 2),
+(13, 12, 1, 113),
+(14, 13, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -118,8 +127,8 @@ CREATE TABLE `peminjaman` (
   `id_peminjaman` int NOT NULL,
   `id_siswa` int NOT NULL,
   `id_admin` int NOT NULL,
-  `tanggal_pinjam` date NOT NULL,
-  `tanggal_kembali` date DEFAULT NULL,
+  `tanggal_pinjam` datetime NOT NULL,
+  `tanggal_kembali` datetime DEFAULT NULL,
   `status` enum('dipinjam','dikembalikan') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -128,7 +137,17 @@ CREATE TABLE `peminjaman` (
 --
 
 INSERT INTO `peminjaman` (`id_peminjaman`, `id_siswa`, `id_admin`, `tanggal_pinjam`, `tanggal_kembali`, `status`) VALUES
-(1, 1, 1, '2026-01-20', NULL, 'dipinjam');
+(3, 3, 1, '2026-01-28 13:52:25', '2026-01-28 13:53:08', 'dikembalikan'),
+(4, 1, 1, '2026-01-28 13:55:38', '2026-01-28 13:55:41', 'dikembalikan'),
+(5, 1, 1, '2026-01-28 13:57:31', '2026-01-29 08:32:31', 'dikembalikan'),
+(6, 1, 1, '2026-01-29 08:32:42', '2026-01-29 08:34:51', 'dikembalikan'),
+(7, 2, 1, '2026-01-29 08:39:44', '2026-01-29 08:40:21', 'dikembalikan'),
+(8, 1, 1, '2026-01-29 08:40:57', '2026-01-29 08:41:05', 'dikembalikan'),
+(9, 1, 1, '2026-01-29 08:41:10', '2026-01-29 08:41:18', 'dikembalikan'),
+(10, 2, 1, '2026-01-29 08:42:01', '2026-01-29 08:44:30', 'dikembalikan'),
+(11, 1, 1, '2026-01-29 08:44:25', '2026-01-29 08:44:32', 'dikembalikan'),
+(12, 2, 1, '2026-01-29 14:21:23', '2026-01-29 14:21:33', 'dikembalikan'),
+(13, 1, 1, '2026-01-29 14:23:57', '2026-02-02 14:34:15', 'dikembalikan');
 
 -- --------------------------------------------------------
 
@@ -149,7 +168,7 @@ CREATE TABLE `siswa` (
 --
 
 INSERT INTO `siswa` (`id_siswa`, `nis`, `nama`, `kelas`, `no_hp`) VALUES
-(1, '2023001', 'Andi Pratama', 'XI RPL 1', '081234567890'),
+(1, '2023001', 'Andi Pratama', 'XI RPL 1', '081234567899'),
 (2, '2023002', 'Budi Santoso', 'XI RPL 2', '081298765432'),
 (3, '2023003', 'Citra Lestari', 'X TKJ 1', '081277788899');
 
@@ -227,13 +246,13 @@ ALTER TABLE `buku`
 -- AUTO_INCREMENT for table `detail_peminjaman`
 --
 ALTER TABLE `detail_peminjaman`
-  MODIFY `id_detail` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_detail` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
-  MODIFY `id_peminjaman` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_peminjaman` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `siswa`

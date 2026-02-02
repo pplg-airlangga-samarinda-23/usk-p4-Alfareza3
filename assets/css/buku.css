@@ -103,3 +103,9 @@ h2 {
         padding: 8px;
     }
 }
+
+form input, form select {
+    padding: 8px;
+    border: 1px solid #333;
+    font-size: 14px;
+}
