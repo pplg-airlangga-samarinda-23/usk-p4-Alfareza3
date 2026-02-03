@@ -28,7 +28,7 @@ $kembali      = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM peminjaman
     <h2>📚 Dashboard Admin</h2>
     <div>
         Halo, <b><?= $_SESSION['nama']; ?></b> |
-        <a href="#" onclick="return confirmLogout()">Logout</a>
+        <a href="#" class="logout" onclick="return confirmLogout()">Logout</a>
     </div>
 </div>
 

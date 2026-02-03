@@ -29,7 +29,7 @@ $riwayat = mysqli_num_rows(mysqli_query($koneksi, "
     <h2>📚 Dashboard Siswa</h2>
     <div>
         Halo, <b><?= $_SESSION['username']; ?></b> |
-        <a href="../logout.php" onclick="return confirm('Yakin logout?')">Logout</a>
+        <a href="../logout.php" class="logout" onclick="return confirm('Yakin logout?')">Logout</a>
     </div>
 </div>
 
