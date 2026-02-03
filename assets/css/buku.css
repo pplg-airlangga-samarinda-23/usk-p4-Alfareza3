@@ -1,111 +1,153 @@
-/* RESET SEDERHANA */
+/* RESET SEDERHANA DAN VARIABEL UMUM */
+:root {
+    --primary-color: #4e73df;
+    --danger-color: #e74a3b;
+    --light-bg: #f8f9fa;
+    --dark-text: #333;
+    --border-radius: 8px;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
 * {
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 /* CONTAINER */
 .container {
-    padding: 25px;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* JUDUL */
 h2 {
-    margin-bottom: 20px;
-    color: #333;
+    margin-bottom: 1.5rem;
+    color: var(--dark-text);
+    font-size: 1.8rem;
+    font-weight: 600;
 }
 
 /* BUTTON */
 .btn {
     display: inline-block;
-    padding: 8px 16px;
-    background: #4e73df;
+    padding: 0.75rem 1.5rem;
+    background: var(--primary-color);
     color: #fff;
     text-decoration: none;
-    border: 1px solid #4e73df;
-    border-radius: 3px;
-    font-size: 14px;
+    border: 1px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: var(--transition);
+    cursor: pointer;
 }
 
 .btn:hover {
     background: #2e59d9;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
 }
 
 .btn-danger {
-    background: #e74a3b;
-    border-color: #e74a3b;
+    background: var(--danger-color);
+    border-color: var(--danger-color);
 }
 
 .btn-danger:hover {
     background: #c0392b;
 }
 
-/* TABLE BUKU (KOTAK JELAS) */
+/* TABLE BUKU */
 .table {
     width: 100%;
     border-collapse: collapse;
     background: #fff;
-    border: 2px solid #333;   /* GARIS LUAR TEBAL */
+    border: 2px solid var(--dark-text);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
 }
 
 .table th,
 .table td {
-    padding: 10px;
-    border: 1px solid #333;   /* GARIS DALAM */
+    padding: 1rem;
+    border: 1px solid #ddd;
     text-align: left;
-    font-size: 14px;
+    font-size: 0.9rem;
 }
 
 .table th {
-    background: #eaeaea;
-    font-weight: bold;
+    background: var(--light-bg);
+    font-weight: 600;
     text-align: center;
+    color: var(--dark-text);
 }
 
-.table td {
-    background: #fff;
+.table tbody tr:nth-child(even) {
+    background: #f9f9f9; /* Zebra stripes untuk readability */
+}
+
+.table tbody tr:hover {
+    background: #e3f2fd; /* Highlight on hover */
 }
 
 /* FORM BOX */
 .form-box {
     background: #fff;
-    padding: 20px;
+    padding: 2rem;
     max-width: 500px;
-    border: 2px solid #333;   /* GARIS KOTAK FORM */
+    border: 2px solid var(--dark-text);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
 }
 
 /* LABEL */
 .form-box label {
-    font-weight: bold;
+    font-weight: 600;
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 0.5rem;
+    color: var(--dark-text);
 }
 
 /* INPUT */
 .form-box input {
     width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
-    border: 1px solid #333;
-    font-size: 14px;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+    transition: var(--transition);
 }
 
 .form-box input:focus {
     outline: none;
-    border-color: #4e73df;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(78, 115, 223, 0.2);
 }
 
-/* RESPONSIVE SEDERHANA */
-@media (max-width: 600px) {
+.form-box input::placeholder {
+    color: #999;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    .table {
+        font-size: 0.8rem;
+        overflow-x: auto; /* Scroll horizontal untuk tabel */
+    }
     .table th,
     .table td {
-        font-size: 12px;
-        padding: 8px;
+        padding: 0.5rem;
     }
-}
-
-form input, form select {
-    padding: 8px;
-    border: 1px solid #333;
-    font-size: 14px;
+    .form-box {
+        max-width: 100%;
+    }
 }

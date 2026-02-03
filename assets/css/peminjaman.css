@@ -1,97 +1,174 @@
+/* RESET DAN VARIABEL */
+:root {
+    --primary-color: #4e73df;
+    --success-color: #1cc88a;
+    --danger-color: #e74a3b;
+    --light-bg: #f8f9fa;
+    --dark-text: #333;
+    --border-radius: 8px;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
 * {
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
-    padding: 25px;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 h2 {
-    margin-bottom: 20px;
-    color: #333;
+    margin-bottom: 1.5rem;
+    color: var(--dark-text);
+    font-size: 1.8rem;
+    font-weight: 600;
 }
 
 /* BUTTON */
 .btn {
     display: inline-block;
-    padding: 8px 16px;
-    background: #4e73df;
+    padding: 0.75rem 1.5rem;
+    background: var(--primary-color);
     color: #fff;
     text-decoration: none;
-    border: 1px solid #4e73df;
-    border-radius: 3px;
-    font-size: 14px;
+    border: 1px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: var(--transition);
+    cursor: pointer;
 }
 
-.btn:hover { background: #2e59d9; }
+.btn:hover {
+    background: #2e59d9;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
 
 .btn-success {
-    background: #1cc88a;
-    border-color: #1cc88a;
+    background: var(--success-color);
+    border-color: var(--success-color);
 }
 
-.btn-success:hover { background: #17a673; }
+.btn-success:hover {
+    background: #17a673;
+}
 
 /* TABLE */
 .table {
     width: 100%;
     border-collapse: collapse;
     background: #fff;
-    border: 2px solid #333;
+    border: 2px solid var(--dark-text);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
 }
 
-.table th, .table td {
-    border: 1px solid #333;
-    padding: 10px;
+.table th,
+.table td {
+    border: 1px solid #ddd;
+    padding: 1rem;
     text-align: center;
+    font-size: 0.9rem;
 }
 
 .table th {
-    background: #eaeaea;
+    background: var(--light-bg);
+    font-weight: 600;
+}
+
+.table tbody tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+.table tbody tr:hover {
+    background: #e3f2fd;
 }
 
 /* STATUS */
 .status-dipinjam {
-    color: #e74a3b;
-    font-weight: bold;
+    color: var(--danger-color);
+    font-weight: 600;
 }
 
 .status-kembali {
-    color: #1cc88a;
-    font-weight: bold;
+    color: var(--success-color);
+    font-weight: 600;
 }
 
 /* FORM */
 .form-box {
     background: #fff;
-    padding: 20px;
-    max-width: 550px;
-    border: 2px solid #333;
+    padding: 2rem;
+    max-width: 600px;
+    border: 2px solid var(--dark-text);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
 }
 
 .form-box label {
-    font-weight: bold;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--dark-text);
 }
 
 .form-box input,
 .form-box select {
     width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
-    border: 1px solid #333;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.form-box input:focus,
+.form-box select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(78, 115, 223, 0.2);
 }
 
 .filter-box {
-    margin: 15px 0;
+    margin: 1.5rem 0;
     display: flex;
-    gap: 10px;
+    gap: 1rem;
     flex-wrap: wrap;
 }
 
 .filter-box input,
 .filter-box select {
-    padding: 8px;
-    border: 1px solid #333;
-    font-size: 14px;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.filter-box input:focus,
+.filter-box select:focus {
+    border-color: var(--primary-color);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    .table {
+        font-size: 0.8rem;
+        overflow-x: auto;
+    }
+    .filter-box {
+        flex-direction: column;
+    }
 }

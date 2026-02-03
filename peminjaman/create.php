@@ -46,6 +46,8 @@ $buku  = mysqli_query($koneksi, "SELECT * FROM buku WHERE stok > 0");
 
     <button type="submit" name="pinjam" class="btn">Simpan</button>
 </form>
+<br>
+<a href="index.php" class="btn">← Kembali</a>
 </div>
 </div>
 

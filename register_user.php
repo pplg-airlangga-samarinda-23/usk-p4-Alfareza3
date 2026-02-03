@@ -80,7 +80,7 @@ if (isset($_POST['daftar'])) {
 
         <button type="submit" name="daftar">Daftar</button>
     </form>
-
+    <br>
     <!-- TOMBOL KEMBALI -->
     <a href="login_user.php">
         <button type="button">← Kembali</button>

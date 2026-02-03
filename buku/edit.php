@@ -14,9 +14,11 @@ $buku = mysqli_fetch_assoc(
 if (isset($_POST['update'])) {
     mysqli_query($koneksi, "
         UPDATE buku SET
-        judul='$_POST[judul]',
-        penulis='$_POST[penulis]',
-        stok='$_POST[stok]'
+            judul='$_POST[judul]',
+            penulis='$_POST[penulis]',
+            tahun_terbit='$_POST[tahun_terbit]',
+            kategori='$_POST[kategori]',
+            stok='$_POST[stok]'
         WHERE id_buku='$id'
     ");
     header("Location: index.php");
@@ -32,18 +34,29 @@ if (isset($_POST['update'])) {
 <body>
 
 <div class="container">
-    <h2>Edit Buku</h2>
+    <h2>✏️ Edit Buku</h2>
 
     <div class="form-box">
         <form method="post">
-            <label>Judul</label>
+
+            <label>Judul Buku</label>
             <input type="text" name="judul" value="<?= $buku['judul'] ?>" required>
 
             <label>Penulis</label>
             <input type="text" name="penulis" value="<?= $buku['penulis'] ?>" required>
 
+            <label>Tahun Terbit</label>
+            <input type="number" name="tahun_terbit"
+                   value="<?= $buku['tahun_terbit'] ?>"
+                   min="1" max="<?= date('Y') ?>" required>
+
+            <label>Kategori</label>
+            <input type="text" name="kategori"
+                   value="<?= $buku['kategori'] ?>"
+                   required>
+
             <label>Stok</label>
-            <input type="number" name="stok" value="<?= $buku['stok'] ?>" required>
+            <input type="number" name="stok" value="<?= $buku['stok'] ?>" min="1" required>
 
             <button type="submit" name="update" class="btn">Update</button>
             <br><br>

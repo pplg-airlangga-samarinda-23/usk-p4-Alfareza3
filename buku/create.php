@@ -8,8 +8,14 @@ include "../database/koneksi.php";
 
 if (isset($_POST['simpan'])) {
     mysqli_query($koneksi, "
-        INSERT INTO buku (judul, penulis, stok)
-        VALUES ('$_POST[judul]', '$_POST[penulis]', '$_POST[stok]')
+        INSERT INTO buku (judul, penulis, tahun_terbit, kategori, stok)
+        VALUES (
+            '$_POST[judul]',
+            '$_POST[penulis]',
+            '$_POST[tahun_terbit]',
+            '$_POST[kategori]',
+            '$_POST[stok]'
+        )
     ");
     header("Location: index.php");
 }
@@ -24,18 +30,25 @@ if (isset($_POST['simpan'])) {
 <body>
 
 <div class="container">
-    <h2>Tambah Buku</h2>
+    <h2>📘 Tambah Buku</h2>
 
     <div class="form-box">
         <form method="post">
-            <label>Judul</label>
+
+            <label>Judul Buku</label>
             <input type="text" name="judul" required>
 
             <label>Penulis</label>
             <input type="text" name="penulis" required>
 
+            <label>Tahun Terbit</label>
+            <input type="number" name="tahun_terbit" min="1" max="<?= date('Y') ?>" required>
+
+            <label>Kategori</label>
+            <input type="text" name="kategori" placeholder="Contoh: Novel, Teknologi" required>
+
             <label>Stok</label>
-            <input type="number" name="stok" required>
+            <input type="number" name="stok" min="1" required>
 
             <button type="submit" name="simpan" class="btn">Simpan</button>
             <br><br>
