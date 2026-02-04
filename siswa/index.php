@@ -22,11 +22,16 @@ if (!empty($_GET['kelas'])) {
     $where[] = "kelas = '$kelas'";
 }
 
-$sql = "SELECT * FROM siswa";
+$sql = "
+    SELECT s.*, a.id_akun
+    FROM siswa s
+    LEFT JOIN akun_siswa a ON s.id_siswa = a.id_siswa
+";
 if ($where) {
     $sql .= " WHERE " . implode(" AND ", $where);
 }
-$sql .= " ORDER BY id_siswa DESC";
+$sql .= " ORDER BY s.id_siswa DESC";
+
 
 $data = mysqli_query($koneksi, $sql);
 
@@ -95,14 +100,24 @@ $kelas_list = mysqli_query($koneksi, "
     <td><?= $row['nama'] ?></td>
     <td><?= $row['kelas'] ?></td>
     <td><?= $row['no_hp'] ?></td>
-    <td>
-        <a href="edit.php?id=<?= $row['id_siswa'] ?>" class="btn">Edit</a>
-        <a href="delete.php?id=<?= $row['id_siswa'] ?>"
-           onclick="return confirm('Yakin hapus siswa ini?')"
-           class="btn btn-danger">
-           Hapus
+<td>
+    <a href="edit.php?id=<?= $row['id_siswa'] ?>" class="btn">Edit</a>
+
+    <?php if ($row['id_akun']): ?>
+        <a href="password.php?id=<?= $row['id_akun'] ?>" class="btn btn-success">
+            Password
         </a>
-    </td>
+    <?php else: ?>
+        <span style="color:#888;">Belum ada akun</span>
+    <?php endif; ?>
+
+    <a href="delete.php?id=<?= $row['id_siswa'] ?>"
+       onclick="return confirm('Yakin hapus siswa ini?')"
+       class="btn btn-danger">
+       Hapus
+    </a>
+</td>
+
 </tr>
 <?php endwhile; ?>
 </table>

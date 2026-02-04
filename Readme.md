@@ -1,87 +1,84 @@
 # 📚 Sistem Informasi Perpustakaan Sekolah Digital
 
-Aplikasi berbasis web untuk mengelola data buku, peminjaman, dan pengembalian di perpustakaan sekolah secara digital menggunakan localhost.
+Aplikasi berbasis web untuk mengelola data buku, peminjaman, dan pengembalian di perpustakaan sekolah secara digital menggunakan environment **Localhost**.
 
 ---
 
-## 📖 Deskripsi
+## 📖 Deskripsi Proyek
 
-Sistem Informasi Perpustakaan Sekolah Digital dibuat untuk membantu proses pengelolaan data perpustakaan agar lebih terstruktur, rapi, dan efisien. Aplikasi ini menggantikan pencatatan manual sehingga dapat mengurangi kesalahan data serta mempercepat proses peminjaman dan pengembalian buku.
+**Sistem Informasi Perpustakaan Sekolah Digital** dirancang untuk mendigitalisasi proses administrasi perpustakaan agar lebih terstruktur, rapi, dan efisien. Aplikasi ini menggantikan pencatatan manual guna meminimalisir risiko kehilangan data serta mempercepat layanan sirkulasi buku.
 
-Sistem ini memiliki dua jenis pengguna, yaitu **Admin** dan **Siswa (User)**, yang masing-masing memiliki hak akses berbeda sesuai kebutuhan.
+Sistem ini mendukung dua role utama:
+* **Admin:** Memiliki kontrol penuh terhadap manajemen data dan transaksi.
+* **Siswa (User):** Dapat mencari buku dan memantau riwayat peminjaman secara mandiri.
 
 ---
 
-## ✨ Fitur
+## ✨ Fitur Utama
 
-### 🔐 Admin
-* **Login Admin:** Akses penuh ke dashboard.
-* **Manajemen Data Buku:** Tambah, edit, dan hapus data koleksi buku.
-* **Manajemen Data Siswa:** Kelola data anggota perpustakaan.
-* **Transaksi Peminjaman:** Mencatat buku yang dipinjam oleh siswa.
-* **Proses Pengembalian:** Validasi pengembalian buku.
-* **Pencarian & Filter:** Memudahkan pencarian data transaksi.
-* **Dashboard:** Informasi ringkas statistik perpustakaan.
+### 🔐 Panel Admin
+- **Dashboard:** Statistik jumlah buku, siswa, dan transaksi aktif.
+- **Manajemen Data:** CRUD (Create, Read, Update, Delete) data buku dan siswa.
+- **Manajemen Akun:** Kontrol keamanan akun siswa (Reset password & Edit profil).
+- **Sirkulasi:** Transaksi peminjaman dan pengembalian buku secara real-time.
+- **Filter & Search:** Pencarian data cepat untuk buku dan riwayat peminjaman.
 
-### 👨‍🎓 Siswa (User)
-* **Registrasi Akun:** Daftar mandiri yang terintegrasi dengan data siswa.
-* **Login User:** Akses ke halaman personal siswa.
-* **Daftar Buku:** Melihat katalog buku yang tersedia.
-* **Peminjaman Mandiri:** Melakukan pengajuan peminjaman.
-* **Pengembalian:** Melakukan proses pengembalian buku melalui sistem.
-* **Riwayat:** Melihat histori peminjaman pribadi.
+### 👨‍🎓 Panel Siswa
+- **Self-Registration:** Mendaftar akun yang terintegrasi dengan database siswa.
+- **Katalog Digital:** Melihat daftar buku yang tersedia.
+- **E-Peminjaman:** Melakukan request peminjaman dan pengembalian secara mandiri.
+- **History:** Melihat riwayat peminjaman pribadi.
 
 ---
 
 ## 🛠️ Tech Stack
 
-* **Bahasa Pemrograman:** PHP (Native)
-* **Database:** MySQL
-* **Frontend:** HTML, CSS
-* **Framework CSS:** Bootstrap 5
-* **Web Server:** Apache (XAMPP)
-* **Text Editor:** Visual Studio Code
-* **Database Manager:** phpMyAdmin
+| Komponen | Teknologi |
+| :--- | :--- |
+| **Bahasa Pemrograman** | PHP (Native) |
+| **Database** | MySQL |
+| **Frontend** | HTML5, CSS3 |
+| **Framework CSS** | Bootstrap 5 |
+| **Web Server** | Apache (XAMPP / Laragon) |
+| **Editor** | Visual Studio Code |
 
 ---
 
-## 🚀 Instalasi & Cara Menjalankan
+## 🚀 Instalasi & Persiapan
 
-1.  **Clone repository ini:**
+Ikuti langkah-langkah berikut untuk menjalankan project di perangkat lokal Anda:
+
+1.  **Clone Repository**
     ```bash
     git clone [https://github.com/username/perpus_c2.git](https://github.com/username/perpus_c2.git)
     ```
 
-2.  **Pindahkan folder project:**
-    Pindahkan folder `perpus_c2` ke dalam direktori `htdocs` (jika menggunakan XAMPP).
+2.  **Pindahkan Folder Project**
+    * Jika menggunakan **XAMPP**: Pindahkan ke folder `C:/xampp/htdocs/`
+    * Jika menggunakan **Laragon**: Pindahkan ke folder `C:/laragon/www/`
 
-3.  **Jalankan XAMPP Control Panel:**
-    Aktifkan modul **Apache** dan **MySQL**.
+3.  **Persiapkan Database**
+    * Aktifkan **Apache** dan **MySQL** di Control Panel XAMPP/Laragon.
+    * Buka browser dan akses [http://localhost/phpmyadmin](http://localhost/phpmyadmin).
+    * Buat database baru dengan nama `perpus_c2`.
+    * Pilih menu **Import** dan pilih file `perpus_c2.sql` yang ada di folder project.
 
-4.  **Import Database:**
-    * Buka browser dan akses `http://localhost/phpmyadmin`
-    * Buat database baru dengan nama `perpus_c2`
-    * Pilih tab **Import**, lalu pilih file `perpus_c2.sql` yang ada di dalam folder project.
-
-5.  **Akses Aplikasi:**
-    Buka browser dan ketik:
-    ```
+4.  **Akses Aplikasi**
+    Buka browser dan ketik alamat:
+    ```text
     http://localhost/perpus_c2
     ```
 
 ---
 
-## 📌 Panduan Pengguna
+## 🔑 Akun Demo
 
-1. Pilih mode login pada halaman utama (Admin atau Siswa).
-2. **Admin** dapat mengelola master data buku, siswa, dan transaksi keseluruhan.
-3. **Siswa** dapat mencari buku dan melihat status peminjaman mereka.
-4. Pastikan melakukan **Logout** setelah selesai menggunakan aplikasi.
+Gunakan kredensial berikut untuk menguji sistem:
 
-### 🔑 Akun Demo (Default)
 | Role | Username | Password |
 | :--- | :--- | :--- |
 | **Admin** | `admin` | `123` |
+| **Siswa** | *(Silakan registrasi di halaman Register)* | `-` |
 
 ---
 
@@ -89,43 +86,34 @@ Sistem ini memiliki dua jenis pengguna, yaitu **Admin** dan **Siswa (User)**, ya
 
 ```text
 perpus_c2/
-├── assets/            # File CSS, JS, dan gambar pendukung
-├── database/          # File koneksi database (PHP)
-├── buku/              # Modul CRUD data buku
-├── siswa/             # Modul CRUD data siswa
-├── peminjaman/        # Logika transaksi pinjam & kembali
-├── user/              # Halaman antarmuka siswa
+├── assets/            # File CSS, JS, dan Gambar
+├── database/          # File koneksi database (config)
+├── buku/              # Modul manajemen buku (Admin)
+├── siswa/             # Modul manajemen siswa & akun
+├── peminjaman/        # Logika transaksi & sirkulasi
+├── user/              # Halaman khusus interface siswa
 ├── index.php          # Halaman utama / Landing page
 ├── login.php          # Form login admin
-├── login_user.php     # Form login siswa
-├── register_user.php  # Form pendaftaran siswa
-├── logout.php         # Menghapus session
-└── perpus_c2.sql      # File database SQL
+├── logout.php         # Proses destroy session
+└── perpus_c2.sql      # Database dump
 
 ```
 
 ---
 
-## 🖼️ Screenshot
-
-| Halaman Login | Dashboard Admin |
-| --- | --- |
-|  |  |
-
----
-
 ## 🤝 Kontribusi
 
-Project ini dibuat untuk keperluan **pembelajaran dan tugas sekolah**. Kontribusi sangat terbuka untuk pengembangan lebih lanjut.
+Project ini dikembangkan untuk tujuan edukasi. Jika Anda ingin melakukan pengembangan lebih lanjut:
 
-Silakan lakukan **fork** repository ini, buat branch baru, dan ajukan **pull request**.
+1. Fork repository ini.
+2. Buat branch fitur baru (`git checkout -b fitur-baru`).
+3. Commit perubahan Anda (`git commit -m 'Menambahkan fitur X'`).
+4. Push ke branch (`git push origin fitur-baru`).
+5. Buat Pull Request.
 
 ---
 
-## 📄 Lisensi
+## 📄 Lisensi & Developer
 
-Project ini digunakan untuk keperluan edukasi dan non-komersial.
-
-## 👤 Developer
-
-**Dimas Fahri Alfareza**
+* **Developer:** Dimas Fahri Alfareza
+* **Lisensi:** Free for Educational Purpose (Non-komersial).
